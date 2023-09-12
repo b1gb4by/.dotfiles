@@ -101,6 +101,15 @@ fshow() {
 FZF-EOF"
 }
 
+# fzf-select-history(Ctrl+R) -
+function fzf-select-history() {
+    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history
+
 # batdiff - git diff with bat
 batdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff

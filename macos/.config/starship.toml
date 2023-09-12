@@ -26,8 +26,14 @@ format = '[$user ]($style)'
 disabled = false
 
 [directory]
+truncation_length = 5
+truncate_to_repo = true
+truncation_symbol = "…/"
 style = "fg:#000000 bg:#eac54f"
-format = "[ $path ]($style)"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+read_only = "🔒 "
+read_only_style = "#FF1818"
+
 disabled = false
 
 [directory.substitutions]
@@ -36,11 +42,17 @@ disabled = false
 "Music" = " "
 "Pictures" = " "
 
+[git_commit]
+commit_hash_length = 8
+
 [git_branch]
 symbol = ""
 style = "fg:#ffffff bg:#e44729"
 format = '[ $symbol $branch ]($style)'
 disabled = false
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
 [git_status]
 style = "fg:#ffffff bg:#e44729"
@@ -57,15 +69,19 @@ disabled = false
 
 [kubernetes]
 style = "fg:#ffffff bg:#326ce5"
-format = '[ on ﴱ ($user on )($cluster in )$context \($namespace\) ]($style)'
+format = '[ on ﴱ $context \($namespace\) ]($style)'
 disabled = false
+[kubernetes.context_aliases]
+'dev.local.cluster.k8s' = 'dev'
+'arn:aws:eks:us-west-2:.*:cluster/dreamkast-dev-cluster' = 'eks:us-w2/dreamkast-dev-cluster'
+'arn:aws:eks:ap-northeast-1:.*:cluster/dreamkast-prod-cluster' = 'eks:ap-ne1/dreamkast-prod-cluster'
 
 [gcloud]
 symbol = " "
 style = "fg:#ffffff bg:#0f9d58"
 format = '[ on $symbol $account(@$domain)(\($region\)) ]($style) '
 # format = '[ on $symbol account@company.iam.gserviceaccount.com(\($region\)) ]($style) ' # for testing purposes
-disabled = false
+disabled = true
 
 [golang]
 symbol = ""
@@ -129,125 +145,5 @@ format = "[ took $duration ]($style)"
 
 [character]
 format = " $symbol"
-
-# add_newline = true
-# scan_timeout = 10
-
-# format = """
-# $aws$gcloud$kubernetes
-# $directory$git_branch$git_commit$git_state$git_status$battery
-# $username$time $character\
-# """
-
-
-# [character]
-# success_symbol = "🀄️"
-# error_symbol = "🚨"
-
-# [cmd_duration]
-# min_time = 10_000                    # Show command duration over 10,000 milliseconds (=10 sec)
-# format = " took [$duration]($style)"
-
-# [package]
-# disabled = true
-
-# [directory]
-# truncation_length = 5
-# truncate_to_repo = false
-# truncation_symbol = "…/"
-# format = "[$path]($style)[$read_only]($read_only_style)"
-# style = "bold #519259"
-# read_only = "🔒 "
-# read_only_style = "#FF1818"
-# [directory.substitutions]
-# "Documents" = "📄 "
-# "Downloads" = "📥 "
-# "Music" = "🎵 "
-# "Pictures" = "📸 "
-
-# [git_branch]
-# format = " [$symbol$branch]($style) "
-# symbol = "🍣 "
-# style = "bold yellow"
-
-# [git_commit]
-# commit_hash_length = 8
-# style = "bold white"
-
-# [git_state]
-# format = '[\($state( $progress_current of $progress_total)\)]($style) '
-
-# [git_status]
-# conflicted = "💢 "
-# ahead = "🏎️ 💨 ×${count} "
-# behind = "🐢 ×${count} "
-# diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count} "
-# untracked = "🛤️  ×${count} "
-# stashed = "📦 "
-# modified = "📝 ×${count} "
-# staged = "🗃️  ×${count} "
-# renamed = "📛 ×${count} "
-# deleted = "🗑️  ×${count} "
-# style = "bright-white"
-# format = "$all_status$ahead_behind"
-
-# [battery]
-# full_symbol = "👍"
-# charging_symbol = "💪"
-# discharging_symbol = "👎"
-
-# [[battery.display]]
-# threshold = 30
-# style = "bold #F32424"
-
-# [username]
-# style_user = "#4FBDBA bold"
-# style_root = "#EF2F88 bold"
-# format = "[$user]($style) "
-# disabled = false
-# show_always = true
-
-# # time
-# [time]
-# disabled = false
-# time_format = "%R"           # Hour:Minute Format
-# format = '[🕒 $time]($style)'
-# style = "white"
-
-# # aws
-# [aws]
-# format = '[$symbol($profile )(\($region\) )]($style)'
-# style = "bold #FFAD60"
-# symbol = "🟠 "
-# [aws.region_aliases]
-# ap-northeast-1 = "an-1"
-# ap-southeast-2 = "au-2"
-# us-east-1 = "ue-1"
-
-# # gcloud
-# [gcloud]
-# format = '[$symbol(\($project\)) ]($style)'
-# style = "bold #36AE7C"
-# symbol = "🟢 "
-
-# # azure
-# [azure]
-# disabled = false
-# format = '[$symbol($subscription) ]($style)'
-# symbol = "🔵 "
-# style = "bold #046BBC"
-
-# # kubernetes
-# [kubernetes]
-# format = '[$symbol$context\($namespace\)]($style) '
-# style = "bold #0AA1DD"
-# symbol = "⛴️  "
-# disabled = false
-# [kubernetes.context_aliases]
-# "dev.local.cluster.k8s" = "dev"
-# ".*/openshift-cluster/.*" = "openshift"
-# "gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
-
-# # docker
-# [docker_context]
-# format = "via [🐳 $context](bold #0AA1DD)"
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
