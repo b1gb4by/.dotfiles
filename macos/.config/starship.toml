@@ -1,40 +1,66 @@
-#                                 
+# document: https://starship.rs/ja-JP/config/#%E3%83%95%E3%82%9A%E3%83%AD%E3%83%B3%E3%83%95%E3%82%9A%E3%83%88
+# base: https://github.com/zaid-hassan/nordic-starship-toml/tree/master
 
 format = """
-[](fg:#0969da bg:#0969da)\
+[░▒▓](#2e3440)\
+$os\
 $username\
-[](fg:#0969da bg:#eac54f)\
+[](bg:#3b4252 fg:#2e3440)\
 $directory\
-[](fg:#eac54f bg:#e44729)\
+[](fg:#3b4252 bg:#434c5e)\
 $git_branch\
 $git_status\
-[ ](fg:#e44729)\
-"""
-
-right_format = """
-[](fg:#8250df)\
+[](fg:#434c5e bg:#4c566a)\
+$c\
+$python\
+$golang\
+$java\
+$nodejs\
+$rust\
+$terraform\
+[](fg:#4c566a bg:#5e81ac)\
+$docker_context\
+$kubernetes\
+[](fg:#5e81ac bg:#6272a4)\
 $time\
-$all
-$character
+[ ](fg:#6272a4)\
+\n
+$cmd_duration\
+$character\
 """
+#add_newline = false
+
+[line_break]
+disabled = false
 
 [username]
 show_always = true
-style_user = "fg:#ffffff bg:#0969da"
-style_root = "fg:#ffffff bg:#0969da"
+style_user = "bg:#2e3440"
+style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 disabled = false
 
-[directory]
-truncation_length = 5
-truncate_to_repo = true
-truncation_symbol = "…/"
-style = "fg:#000000 bg:#eac54f"
-format = "[ $path ]($style)[$read_only]($read_only_style)"
-read_only = "🔒 "
-read_only_style = "#FF1818"
+[os]
+style = "bg:#2e3440"
+disabled = false     # Disabled by default
 
-disabled = false
+[os.symbols]
+Alpine = " "
+CentOS = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+openSUSE = " "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[directory]
+style = "bg:#3b4252"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
 [directory.substitutions]
 "Documents" = " "
@@ -42,108 +68,79 @@ disabled = false
 "Music" = " "
 "Pictures" = " "
 
-[git_commit]
-commit_hash_length = 8
+[c]
+symbol = " "
+style = "bg:#4c566a"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:#4c566a"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = "󰡨 "
+style = "bg:#5e81ac"
+format = '[ $symbol $context ]($style) $path'
 
 [git_branch]
 symbol = ""
-style = "fg:#ffffff bg:#e44729"
+style = "bg:#434c5e"
 format = '[ $symbol $branch ]($style)'
-disabled = false
+
+[git_status]
+style = "bg:#434c5e"
+format = '[$all_status$ahead_behind ]($style)'
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
-[git_status]
-style = "fg:#ffffff bg:#e44729"
-format = '[$all_status$ahead_behind ]($style)'
-disabled = false
-
-# Start languages and tools #
-
-[c]
-symbol = ""
-style = "fg:#ffffff bg:#840a2c"
+[golang]
+symbol = " "
+style = "bg:#434c5e"
 format = '[ $symbol ($version) ]($style)'
-disabled = false
+
+[java]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[terraform]
+symbol = "󱁢"
+style = "bg:#434c5e"
+format = '[ $symbol $workspace ($version) ]($style)'
 
 [kubernetes]
-style = "fg:#ffffff bg:#326ce5"
-format = '[ on ﴱ $context \($namespace\) ]($style)'
+symbol = "󱃾"
+style = "bg:#5e81ac"
+format = '[ $symbol $context \($namespace\) ]($style)'
 disabled = false
 [kubernetes.context_aliases]
 'dev.local.cluster.k8s' = 'dev'
 'arn:aws:eks:us-west-2:.*:cluster/dreamkast-dev-cluster' = 'eks:us-w2/dreamkast-dev-cluster'
 'arn:aws:eks:ap-northeast-1:.*:cluster/dreamkast-prod-cluster' = 'eks:ap-ne1/dreamkast-prod-cluster'
 
-[gcloud]
-symbol = " "
-style = "fg:#ffffff bg:#0f9d58"
-format = '[ on $symbol $account(@$domain)(\($region\)) ]($style) '
-# format = '[ on $symbol account@company.iam.gserviceaccount.com(\($region\)) ]($style) ' # for testing purposes
-disabled = true
-
-[golang]
-symbol = ""
-style = "fg:#ffffff bg:#007d9c"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[java]
-symbol = ""
-style = "fg:#ffffff bg:#007396"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[lua]
-symbol = ""
-style = "fg:#ffffff bg:#000080"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[nodejs]
-symbol = ""
-style = "fg:#ffffff bg:#5fa04e"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[package]
-symbol = ""
-style = "fg:#ffffff bg:#cb3837"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[php]
-symbol = ''
-style = "fg:#ffffff bg:#4F5B93"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[python]
-symbol = ''
-style = "fg:#000000 bg:#ffdf76"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-[rust]
-symbol = ""
-style = "fg:#ffffff bg:#a72145"
-format = '[ $symbol ($version) ]($style)'
-disabled = false
-
-# End languages and tools #
-
 [time]
 disabled = false
-time_format = "%R"              # Hour:Minute Format
-style = "fg:#ffffff bg:#8250df"
-format = '[  $time ]($style)'
-
-[cmd_duration]
-style = "fg:#000000 bg:yellow"
-format = "[ took $duration ]($style)"
+time_format = "%R"             # Hour:Minute Format
+style = "bg:#6272a4"
+format = '[  $time ]($style)'
 
 [character]
-format = " $symbol"
-success_symbol = "[➜](bold green)"
-error_symbol = "[✗](bold red)"
+success_symbol = '[ ➜](#6272a4)'
+error_symbol = '[ ➜](bold red)'
+#style = "bg:#6272a4"
+
+[cmd_duration]
+min_time = 500
+format = ' [$duration](#6272a4)'
