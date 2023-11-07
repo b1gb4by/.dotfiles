@@ -12,4 +12,3 @@ source <(kubectl completion zsh)
 # google-cloud-sdk
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
