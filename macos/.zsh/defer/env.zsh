@@ -15,7 +15,6 @@ else
 fi
 
 # golang
-export GOPATH=$HOME
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$GOPATH/bin
 
