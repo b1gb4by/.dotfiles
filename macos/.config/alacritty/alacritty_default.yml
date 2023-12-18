@@ -6,7 +6,7 @@ window:
     x: 6
     y: 6
   dynamic_padding: false
-  opacity: 1.00
+  opacity: 0.80
   title: Alacritty
   class:
     instance: Alacritty

@@ -2,15 +2,15 @@
 # base: https://github.com/zaid-hassan/nordic-starship-toml/tree/master
 
 format = """
-[░▒▓](#16B65C)\
+[░▒▓](#6667ab)\
 $os\
 $username\
-[](bg:#139334 fg:#16B65C)\
+[](bg:#f18aad fg:#6667ab)\
 $directory\
-[](fg:#139334 bg:#CEA900)\
+[](fg:#f18aad bg:#ea6759)\
 $git_branch\
 $git_status\
-[](fg:#CEA900 bg:#FE130F)\
+[](fg:#ea6759 bg:#f88f58)\
 $c\
 $python\
 $golang\
@@ -18,12 +18,12 @@ $java\
 $nodejs\
 $rust\
 $terraform\
-[](fg:#FE130F bg:#095CD4)\
+[](fg:#f88f58 bg:#219ebc)\
 $docker_context\
 $kubernetes\
-[](fg:#095CD4 bg:#16B65C)\
+[](fg:#219ebc bg:#6667ab)\
 $time\
-[ ](fg:#16B65C)\
+[ ](fg:#6667ab)\
 \n
 $cmd_duration\
 $character\
@@ -35,13 +35,13 @@ disabled = false
 
 [username]
 show_always = true
-style_user = "bg:#16B65C"
+style_user = "bg:#6667ab"
 style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 disabled = false
 
 [os]
-style = "bg:#16B65C"
+style = "bg:#6667ab"
 disabled = false     # Disabled by default
 
 [os.symbols]
@@ -57,7 +57,7 @@ Unknown = " "
 Windows = " "
 
 [directory]
-style = "bg:#139334"
+style = "bg:#f18aad"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -70,26 +70,26 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = " "
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = "󰡨 "
-style = "bg:#095CD4"
+style = "bg:#219ebc"
 format = '[ $symbol $context ]($style) $path'
 
 [git_branch]
 symbol = ""
-style = "bg:#CEA900"
+style = "bg:#ea6759"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#CEA900"
+style = "bg:#ea6759"
 format = '[$all_status$ahead_behind ]($style)'
 
 [git_state]
@@ -97,32 +97,32 @@ format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
 [golang]
 symbol = " "
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [terraform]
 symbol = "󱁢"
-style = "bg:#FE130F"
+style = "bg:#f88f58"
 format = '[ $symbol $workspace ($version) ]($style)'
 
 [kubernetes]
 symbol = "󱃾"
-style = "bg:#095CD4"
+style = "bg:#219ebc"
 format = '[ $symbol $context \($namespace\) ]($style)'
 disabled = false
 [kubernetes.context_aliases]
@@ -133,14 +133,14 @@ disabled = false
 [time]
 disabled = false
 time_format = "%R"             # Hour:Minute Format
-style = "bg:#16B65C"
+style = "bg:#6667ab"
 format = '[  $time ]($style)'
 
 [character]
-success_symbol = '[ ➜](#16B65C)'
+success_symbol = '[ ➜](#6667ab)'
 error_symbol = '[ ➜](bold red)'
-#style = "bg:#16B65C"
+#style = "bg:#6667ab"
 
 [cmd_duration]
 min_time = 500
-format = ' [$duration](#16B65C)'
+format = ' [$duration](#6667ab)'
