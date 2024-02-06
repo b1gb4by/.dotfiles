@@ -18,10 +18,11 @@ $java\
 $nodejs\
 $rust\
 $terraform\
-[](fg:#f88f58 bg:#219ebc)\
+[](fg:#f88f58 bg:#40A2D8)\
 $docker_context\
+[](fg:#40A2D8 bg:#0B60B0)\
 $kubernetes\
-[](fg:#219ebc bg:#6667ab)\
+[](fg:#0B60B0 bg:#6667ab)\
 $time\
 [ ](fg:#6667ab)\
 \n
@@ -80,8 +81,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = "󰡨 "
-style = "bg:#219ebc"
-format = '[ $symbol $context ]($style) $path'
+style = "bg:#40A2D8"
+format = '[ $symbol $context ]($style)'
 
 [git_branch]
 symbol = ""
@@ -106,29 +107,34 @@ style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
-symbol = ""
+symbol = " "
 style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = ""
+symbol = " "
 style = "bg:#f88f58"
 format = '[ $symbol ($version) ]($style)'
 
 [terraform]
-symbol = "󱁢"
+symbol = "󱁢 "
 style = "bg:#f88f58"
 format = '[ $symbol $workspace ($version) ]($style)'
 
 [kubernetes]
-symbol = "󱃾"
-style = "bg:#219ebc"
+symbol = "󱃾 "
+style = "bg:#0B60B0"
 format = '[ $symbol $context \($namespace\) ]($style)'
 disabled = false
-[kubernetes.context_aliases]
-'dev.local.cluster.k8s' = 'dev'
-'arn:aws:eks:us-west-2:.*:cluster/dreamkast-dev-cluster' = 'eks:us-w2/dreamkast-dev-cluster'
-'arn:aws:eks:ap-northeast-1:.*:cluster/dreamkast-prod-cluster' = 'eks:ap-ne1/dreamkast-prod-cluster'
+[[kubernetes.contexts]]
+context_pattern = 'dev.local.cluster.k8s'
+context_alias = 'dev'
+[[kubernetes.contexts]]
+context_pattern = 'arn:aws:eks:us-west-2:.*:cluster/dreamkast-dev-cluster'
+context_alias = 'eks:us-w2/dreamkast-dev-cluster'
+[[kubernetes.contexts]]
+context_pattern = 'arn:aws:eks:ap-northeast-1:.*:cluster/dreamkast-prod-cluster'
+context_alias = 'eks:ap-ne1/dreamkast-prod-cluster'
 
 [time]
 disabled = false
