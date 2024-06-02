@@ -1,5 +1,12 @@
 # fzf
-export FZF_DEFAULT_OPTS="--prompt ' ' --marker=+ --color=dark --layout=reverse --color=fg:250,fg+:15,hl:203,hl+:203 --color=info:100,pointer:15,marker:220,spinner:11,header:-1,gutter:-1,prompt:15"
+export FZF_DEFAULT_OPTS="
+  --prompt ' '
+  --marker=+
+  --color=dark
+  --layout=reverse
+  --color=fg:250,fg+:15,hl:203,hl+:203
+  --color=info:100,pointer:15,marker:220,spinner:11,header:-1,gutter:-1,prompt:15
+  "
 export FZF_CTRL_T_COMMAND='fd --hidden --follow | rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export FZF_COMPLETION_OPTS="-x"
