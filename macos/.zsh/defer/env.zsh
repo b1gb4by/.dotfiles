@@ -17,6 +17,3 @@ fi
 # golang
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$GOPATH/bin
-
-# java
-export JAVA_HOME=`/usr/libexec/java_home -v xx`

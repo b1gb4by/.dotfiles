@@ -1,152 +1,81 @@
-# document: https://starship.rs/ja-JP/config/#%E3%83%95%E3%82%9A%E3%83%AD%E3%83%B3%E3%83%95%E3%82%9A%E3%83%88
-# base: https://github.com/zaid-hassan/nordic-starship-toml/tree/master
-
 format = """
-[░▒▓](#6667ab)\
-$os\
-$username\
-[](bg:#f18aad fg:#6667ab)\
 $directory\
-[](fg:#f18aad bg:#ea6759)\
+[](fg:#FF595E bg:#FFCA3A)\
 $git_branch\
 $git_status\
-[](fg:#ea6759 bg:#f88f58)\
-$c\
-$python\
-$golang\
-$java\
+[](fg:#FFCA3A bg:#1877F2)\
+$kubernetes\
+[](fg:#1877F2 bg:#8AC926)\
 $nodejs\
 $rust\
-$terraform\
-[](fg:#f88f58 bg:#40A2D8)\
-$docker_context\
-[](fg:#40A2D8 bg:#0B60B0)\
-$kubernetes\
-[](fg:#0B60B0 bg:#6667ab)\
-$time\
-[ ](fg:#6667ab)\
-\n
-$cmd_duration\
-$character\
-"""
-#add_newline = false
+$golang\
+$php\
+[](fg:#8AC926)\
+\n$character"""
 
-[line_break]
-disabled = false
+# コマンドラインに1行分のスペースを入れない
+add_newline = true
 
-[username]
-show_always = true
-style_user = "bg:#6667ab"
-style_root = "bg:#9A348E"
-format = '[$user ]($style)'
-disabled = false
-
-[os]
-style = "bg:#6667ab"
-disabled = false     # Disabled by default
-
-[os.symbols]
-Alpine = " "
-CentOS = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-openSUSE = " "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
+# left_promptとright_promptの間を何で埋めるか設定
+[fill]
+symbol = ' '
 
 [directory]
-style = "bg:#f18aad"
+style = "fg:#2E3440 bg:#FF595E bold"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 4
+truncate_to_repo = true
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = " "
+"Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
 
-[c]
-symbol = " "
-style = "bg:#f88f58"
-format = '[ $symbol ($version) ]($style)'
-
-[python]
-symbol = " "
-style = "bg:#f88f58"
-format = '[ $symbol ($version) ]($style)'
-
-[docker_context]
-symbol = "󰡨 "
-style = "bg:#40A2D8"
-format = '[ $symbol $context ]($style)'
+[aws]
+disabled = true
+[gcloud]
+disabled = true
 
 [git_branch]
 symbol = ""
-style = "bg:#ea6759"
-format = '[ $symbol $branch ]($style)'
+style = "bg:#FFCA3A"
+format = '[[ $symbol $branch ](fg:#2E3440 bg:#FFCA3A)]($style)'
 
 [git_status]
-style = "bg:#ea6759"
-format = '[$all_status$ahead_behind ]($style)'
-
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-
-[golang]
-symbol = " "
-style = "bg:#f88f58"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#f88f58"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#FFCA3A"
+format = '[[($all_status$ahead_behind )](fg:#2E3440 bg:#FFCA3A)]($style)'
 
 [nodejs]
-symbol = " "
-style = "bg:#f88f58"
-format = '[ $symbol ($version) ]($style)'
+symbol = ""
+style = "bg:#8AC926"
+format = '[[ $symbol ($version) ](fg:#2E3440 bg:#8AC926)]($style)'
 
 [rust]
-symbol = " "
-style = "bg:#f88f58"
-format = '[ $symbol ($version) ]($style)'
+symbol = ""
+style = "bg:#8AC926"
+format = '[[ $symbol ($version) ](fg:#2E3440 bg:#8AC926)]($style)'
 
-[terraform]
-symbol = "󱁢 "
-style = "bg:#f88f58"
-format = '[ $symbol $workspace ($version) ]($style)'
+[golang]
+symbol = ""
+style = "bg:#8AC926"
+format = '[[ $symbol ($version) ](fg:#2E3440 bg:#8AC926)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#8AC926"
+format = '[[ $symbol ($version) ](fg:#2E3440 bg:#8AC926)]($style)'
 
 [kubernetes]
-symbol = "󱃾 "
-style = "bg:#0B60B0"
-format = '[ $symbol $context \($namespace\) ]($style)'
+symbol = "󱃾"
+style = "bg:#1877F2"
+format = '[[ $symbol $context \($namespace\)](fg:#2E3440 bg:#1877F2)]($style)'
 disabled = false
-[[kubernetes.contexts]]
-context_pattern = 'dev.local.cluster.k8s'
-context_alias = 'dev'
-[[kubernetes.contexts]]
-context_pattern = 'arn:aws:eks:us-west-2:.*:cluster/dreamkast-dev-cluster'
-context_alias = 'eks:us-w2/dreamkast-dev-cluster'
-[[kubernetes.contexts]]
-context_pattern = 'arn:aws:eks:ap-northeast-1:.*:cluster/dreamkast-prod-cluster'
-context_alias = 'eks:ap-ne1/dreamkast-prod-cluster'
+[kubernetes.context_aliases]
 
 [time]
 disabled = false
-time_format = "%R"             # Hour:Minute Format
-style = "bg:#6667ab"
-format = '[  $time ]($style)'
-
-[character]
-success_symbol = '[ ➜](#6667ab)'
-error_symbol = '[ ➜](bold red)'
-#style = "bg:#6667ab"
-
-[cmd_duration]
-min_time = 500
-format = ' [$duration](#6667ab)'
+time_format = "%R"                                      # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'

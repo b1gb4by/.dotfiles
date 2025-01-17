@@ -23,9 +23,9 @@ echo "Create symbolic links (~/*)"
 ln -sv $DOTFILES_DIR/.zshrc ~/.zshrc
 ln -sv $DOTFILES_DIR/.zprofile ~/.zprofile
 ln -sv $DOTFILES_DIR/.gitconfig ~/.gitconfig
-ln -sv $DOTFILES_DIR/.vimrc ~/.vimrc
+#ln -sv $DOTFILES_DIR/.vimrc ~/.vimrc
 ln -sv $DOTFILES_DIR/Brewfile ~/Brewfile
-ln -sv $DOTFILES_DIR/.tmux.conf ~/.tmux.conf
+# ln -sv $DOTFILES_DIR/.tmux.conf ~/.tmux.conf
 
 echo "Create symbolic links (~/.config/*)"
 

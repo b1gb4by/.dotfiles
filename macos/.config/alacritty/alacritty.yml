@@ -1,4 +1,0 @@
-import:
-  - ~/.config/alacritty/alacritty_default.yml
-  - ~/.config/alacritty/alacritty_macos_local.yml
-  - ~/.config/alacritty/alacritty_theme.yml
