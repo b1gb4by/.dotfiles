@@ -1,25 +1,146 @@
+# User Configuration
 [user]
-	name = b1gb4by
-	email = 34154552+b1gb4by@users.noreply.github.com
+    name = b1gb4by
+    email = 34154552+b1gb4by@users.noreply.github.com
 
+# Core Settings
+[core]
+    editor = nvim
+    excludesfile = ~/.config/git/ignore
+    whitespace = trailing-space,space-before-tab
+    pager = delta
+
+# Delta Configuration
 [pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
 
 [interactive]
-  diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [delta]
-	diff-so-fancy=true
-	keep-plus-minus-markers=true
-	minus-emph-style="bold 94 89"
-	plus-emph-style="bold 29 29"
-	hunk-header-style="omit"
-	line-numbers=true
+    features = decorations
+    diff-so-fancy = true
+    keep-plus-minus-markers = true
+    navigate = true
+    line-numbers = true
+    side-by-side = false
+    syntax-theme = Dracula
+    minus-style = red bold
+    minus-emph-style = "bold 94 89"
+    plus-style = green bold
+    plus-emph-style = "bold 29 29"
+    hunk-header-style = omit
+    file-modified-label = modified:
 
 [delta "decorations"]
-  commit-decoration-style = bold yellow box ul
-  file-style = bold yellow ul
-  file-decoration-style = none
+    commit-decoration-style = bold yellow box ul
+    commit-style = raw
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = blue box
+
+# Commit Settings
+[commit]
+    gpgsign = true
+    template = ~/.config/git/message
+
+[format]
+    signoff = true
+
+# Color Settings
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+# URL Shortcuts
+[url "git@github.com:"]
+    insteadOf = gh:
+    pushInsteadOf = github:
+    pushInsteadOf = git://github.com/
+
+[url "git://github.com/"]
+    insteadOf = github:
+
+# Alias Definitions
+[alias]
+    # Basic shortcuts
+    st = status -sb
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+    # Advanced commands
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    visual = !gitk
+    uncommit = reset --soft HEAD^
+    amend = commit --amend --no-edit
+    contributors = shortlog --summary --numbered
+
+    # Branch operations
+    branches = branch -a
+    remotes = remote -v
+    current-branch = rev-parse --abbrev-ref HEAD
+
+    # Stash operations
+    stashes = stash list
+    save = stash save
+    pop = stash pop
+
+# Merge and Diff Settings
+[merge]
+    tool = nvim
+    conflictstyle = diff3
+    log = true
+
+[diff]
+    algorithm = histogram
+    colorMoved = default
+    tool = nvim
+
+[pull]
+    rebase = true
+
+[push]
+    default = current
+    followTags = true
+
+[fetch]
+    prune = true
+
+[init]
+    defaultBranch = main
+
+# Help autocorrect mistyped commands
+[help]
+    autocorrect = 20
+
+# Automatically handle line endings
+[core]
+    autocrlf = input
+    safecrlf = warn
