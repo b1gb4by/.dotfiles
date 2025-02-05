@@ -1,6 +1,7 @@
 [user]
 	name = b1gb4by
 	email = 34154552+b1gb4by@users.noreply.github.com
+  signingkey = ~/.ssh/keys/github-verify-ed25519.pub
 
 [pager]
   diff = delta
@@ -31,3 +32,9 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+
+[format]
+  signoff = true
+
+[gpg]
+  format = ssh
