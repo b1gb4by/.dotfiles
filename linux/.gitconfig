@@ -33,6 +33,16 @@
 	helper =
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
 
+[merge]
+  conflictstyle = zdiff3
+
+[diff]
+  colorMoved = default
+
+[rebase]
+  autostash = true
+  abbreviateCommands = true
+
 [format]
   signoff = true
 
