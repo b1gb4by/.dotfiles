@@ -85,8 +85,9 @@ main() {
     # Config directory files
     log_info "Setting up .config directory files..."
     local config_files=(
-        "sheldon"
         "git"
+        "mise"
+        "sheldon"
         "starship.toml"
         "topgrade.toml"
     )

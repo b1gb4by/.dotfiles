@@ -4,6 +4,9 @@ eval "$(/usr/local/bin/brew shellenv)"
 # asdf
 # . /usr/local/opt/asdf/libexec/asdf.sh
 
+# mise
+eval "$(mise activate zsh)"
+
 # krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 

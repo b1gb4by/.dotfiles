@@ -1,0 +1,3 @@
+[tasks.random-member]
+description = "メンバーをランダムに選ぶ"
+run = "shuf -n 1 -e Alice Bob Charlie Dave"
