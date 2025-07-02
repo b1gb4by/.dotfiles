@@ -27,3 +27,7 @@ unset sheldon_cache sheldon_toml
 source $ZSHRC_DIR/.zsh/sync/*.zsh
 zsh-defer source $ZSHRC_DIR/.zsh/defer/*.zsh
 zsh-defer unfunction source
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/taisuke.okamoto/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

@@ -1,3 +1,8 @@
-[tasks.random-member]
-description = "メンバーをランダムに選ぶ"
-run = "shuf -n 1 -e Alice Bob Charlie Dave"
+[tasks.create-ssh-key-ed25519]
+description = "ed25519のSSH鍵を作成する"
+run = "ssh-keygen -t ed25519 -C 'your_email@example.com' -f ~/.ssh/id_ed25519"
+
+[tools]
+go = "1.24.4"
+kubectl = "1.32.6"
+node = "24.3.0"

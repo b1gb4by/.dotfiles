@@ -2,7 +2,7 @@
 [user]
     name = b1gb4by
     email = 34154552+b1gb4by@users.noreply.github.com
-    signingkey = ~/.ssh/keys/github_verify_ed25519.pub
+    signingkey = ~/.ssh/keys/github_signing_ed25519.pub
 
 # Core Settings
 [core]

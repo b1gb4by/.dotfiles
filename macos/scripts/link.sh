@@ -15,6 +15,8 @@ BOLD='\033[1m'
 DOTFILES_DIR="${HOME}/.dotfiles/macos"
 CONFIG_DIR="${DOTFILES_DIR}/.config"
 CONFIG_HOME="${HOME}/.config"
+KUBE_CONFIG_DIR="${DOTFILES_DIR}/.kube"
+KUBE_CONFIG_HOME="${HOME}/.kube"
 
 # Logging functions
 log_info() {
@@ -70,12 +72,12 @@ main() {
     # Home directory dotfiles
     log_info "Setting up home directory dotfiles..."
     local home_files=(
+        ".Brewfile"
+        ".gitconfig"
+        ".vimrc"
+        #".tmux.conf"
         ".zshrc"
         ".zprofile"
-        ".gitconfig"
-        #".vimrc"
-        #".tmux.conf"
-        "Brewfile"
     )
 
     for file in "${home_files[@]}"; do
@@ -94,6 +96,15 @@ main() {
 
     for file in "${config_files[@]}"; do
         create_link "${CONFIG_DIR}/${file}" "${CONFIG_HOME}/${file}"
+    done
+
+    # Kubernetes config files
+    log_info "Setting up Kubernetes config files..."
+    local kubernetes_files=(
+        "kubie.yaml"
+    )
+    for file in "${kubernetes_files[@]}"; do
+        create_link "${KUBE_CONFIG_DIR}/${file}" "${KUBE_CONFIG_HOME}/${file}"
     done
 
     log_success "Dotfiles setup completed successfully!"
