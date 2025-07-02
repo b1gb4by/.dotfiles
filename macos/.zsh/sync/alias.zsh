@@ -38,9 +38,6 @@ alias gc='gcloud'
 alias k='kubectl'
 alias kk='kubectl krew'
 
-# istioctl
-#alias i='istioctl'
-
 # helm
 alias h='helm'
 
