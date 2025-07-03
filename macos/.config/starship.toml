@@ -10,7 +10,11 @@ $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#8AC926)\
+[](fg:#8AC926 bg:#687EFF)\
+$gcloud\
+[](fg:#687EFF bg:#FF7D29)\
+$aws\
+[](fg:#FF7D29)\
 \n$character"""
 
 # コマンドラインに1行分のスペースを入れない
@@ -34,9 +38,23 @@ truncation_symbol = "…/"
 "Pictures" = " "
 
 [aws]
-disabled = true
+symbol = "󱇶"
+style = "bg:#FF7D29"
+format = '[[ $symbol ($profile )(\($region\) )](fg:#2E3440 bg:#FF7D29)]($style)'
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
+[aws.profile_aliases]
+CompanyGroupFrobozzOnCallAccess = 'Frobozz'
+
 [gcloud]
-disabled = true
+symbol = "󱇶"
+style = "bg:#687EFF"
+format = '[[ $symbol $account(@$domain)](fg:#2E3440 bg:#687EFF)]($style)'
+[gcloud.region_aliases]
+us-central1 = 'uc1'
+asia-northeast1 = 'an1'
+
 
 [git_branch]
 symbol = ""
