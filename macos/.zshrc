@@ -31,3 +31,6 @@ zsh-defer unfunction source
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/taisuke.okamoto/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
